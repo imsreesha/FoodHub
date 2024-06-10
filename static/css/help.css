@@ -1,0 +1,124 @@
+.help{
+    color: black;
+    background-color:#23D4DF;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-top: 30px;
+    height: 60px;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+.div1{
+    display: inline-block;
+    margin-left: 100px;
+    margin-top:0px ;
+    position: absolute;
+}
+
+.help2{
+    color:black;
+    font-family:"poppins";
+
+
+}
+.div2{
+    display: inline-block;
+    margin-left: 150px;
+    position: absolute;
+}
+
+.con{
+    background-color: rgb(200, 233, 83);
+    width: 300px;
+    position: absolute;
+    margin-top: 100px;
+    border-radius: 10px;
+    padding: 40px;
+
+}
+
+.con1{
+    background-color:#23D4DF ;
+    margin-left: 100px;
+    display: inline-block;
+    margin-left: 150px;
+    margin-top: 300px;
+    padding: 10px;
+    border-radius: 10px;
+    position: absolute;
+
+}
+
+.con2{
+    background-color:#23D4DF ;
+    margin-left: 400px;
+    display: inline-block;
+    margin-top: 300px ;
+    padding: 10px;
+    border-radius: 10px;
+    position: absolute;
+
+
+}
+
+.imagei{
+    width: 600px;
+    height: 600px;
+    margin-left: 800px;
+    margin-top: 0px;
+    display: inline-block;
+    position: absolute;
+
+}
+.con3{
+    margin-left: 400px;
+    font-size: 30px;
+    margin-top: 400px;
+
+
+
+}
+.image1{
+    height: 70px;
+    width: 70px;
+    margin-left:430px ;
+    position: absolute;
+    display:inline-block
+}
+
+.p1{
+    margin-left: 429px;
+    margin-top: 75px;
+    position: absolute;
+    display:inline-block
+
+}
+.image2{
+    height: 70px;
+    width: 70px;
+    margin-top:0px;
+    margin-left:525px ;
+    position: absolute;
+    display:inline-block
+}
+.p2{
+    margin-left: 525px;
+    margin-top: 75px;
+    position: absolute;
+    display:inline-block
+}
+.image3{
+    height: 65px;
+    width: 65px;
+    margin-left:620px ;
+    margin-top:0px;
+    position: absolute;
+    display:inline-block
+}
+.p3{
+    margin-left: 620px;
+    margin-top: 75px;
+    position: absolute;
+    display:inline-block
+}

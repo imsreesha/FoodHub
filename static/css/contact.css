@@ -1,0 +1,91 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    transition:0.5s;
+}
+.h4{
+    padding-top: 5px;
+}
+
+.row{
+    align-items: center;
+    width:60%;
+    height:600px;
+    color:black;
+    background-color: gainsboro;
+    background-image: url(cntct.jpg);
+    background-repeat: no-repeat;
+    background-size: 900px;
+    padding-left: 180px;
+    padding-top:180px;
+}
+.row i{
+
+    margin:5px;
+}
+.box{
+    text-align: center;
+    width:480px;
+    height: 200px;
+
+    padding-top: 20px;
+    background-color:rgb(255, 255, 255)
+
+}
+.contact{
+    float:right;
+    height: 600px;
+    width: 40%;
+    margin: 20px;
+    padding-top:40px;
+    text-align: center;
+    background-color:#05dbea;
+}
+.form{
+
+    color: black;
+    margin-top:10px;
+    width: 100%;
+
+    float: left;
+
+
+}
+.uname{
+
+    height:30px;
+    width: 350px;
+    padding-left: 3px;
+    border:2px solid black;
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+.submit{
+    height:30px;
+    padding: 5px;
+    background-color:rgb(2, 2, 2);
+    border:none;
+    color:white;
+    border-radius:5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.formtext{
+    padding: 3px;
+    height :300px;
+    width:400px;
+    border:2px solid black;
+
+}

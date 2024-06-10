@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ main_category }} Items</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{% static 'css/item.css' %}">
+</head>
+<body>
+
+<header class="header">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" href="#">E Food</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container-fluid">
+    <h1>{{Maincategory}} Items</h1> <!-- Display main category as heading -->
+    <div id="itemsContainer" class="row mx-0">
+        {% for x in item %}
+        <div class="card">
+            <img src="{{ x.Image.url }}" alt="{{ x.Item_name }}">
+            <p>{{ x.Item_name }}</p>
+            <p>{{ x.host_id.Restaurant_name }}</p>
+
+            <p>Rs {{ x.Price }}</p>
+            <a href="#" class="wishlist"><i class='bx bx-heart icon-heart' ></i></a>
+            <button class="view-item" onclick="showPopup('{{ x.Item_name }}', '{{ x.Image.url }}', {{x.Price }},'{{x.description}}')">View Item</button>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Popup modal -->
+<div id="itemPopup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="popup-img">
+            <img src="" alt="Item Image" id="popupImg">
+        </div>
+        <div class="popup-details">
+            <h2 id="itemName"></h2>
+            <p id="itemDescription"></p> <!-- Placeholder for description -->
+            <p id="itemPrice">Price: Rs <span id="priceValue"></span></p>
+            <div class="quantity">
+                <button onclick="changeQuantity('decrease')">-</button>
+                <input type="text" id="quantity" value="1" readonly>
+                <button onclick="changeQuantity('increase')">+</button>
+            </div>
+            <p>Total Price: Rs <span id="totalPrice">0.00</span></p>
+            <button onclick="addToCart()" class="addToCart-btn">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+   function showPopup(itemName, itemImage, itemPrice, itemDescription) {
+    var modal = document.getElementById("itemPopup");
+
+    var modalImage = modal.querySelector('.popup-img img');
+    var modalTitle = modal.querySelector('#itemName');
+    var modalDescription = modal.querySelector('#itemDescription');
+    var modalPrice = modal.querySelector('#priceValue');
+    var modalQuantity = modal.querySelector('#quantity');
+
+    modalImage.src = itemImage;
+    modalTitle.textContent = itemName;
+    modalPrice.textContent = itemPrice.toFixed(2);
+    modalDescription.textContent = itemDescription; // Populate description here
+    modalQuantity.value = 0;
+
+    modal.style.display = "block";
+}
+
+
+
+    function closeModal() {
+        var modal = document.getElementById("itemPopup");
+        modal.style.display = "none";
+    }
+function changeQuantity(change) {
+    var quantityInput = document.getElementById("quantity");
+    var quantity = parseInt(quantityInput.value);
+    var itemPrice = parseFloat(document.getElementById("priceValue").textContent);
+
+    if (change === 'increase') {
+        quantity++;
+    } else if (change === 'decrease' && quantity > 1) {
+        quantity--;
+    }
+
+    quantityInput.value = quantity;
+
+    // Update total price
+    var totalPriceElement = document.getElementById("totalPrice");
+    totalPriceElement.textContent = (itemPrice * quantity).toFixed(2);
+}
+
+
+
+function addToCart() {
+    var itemName = document.getElementById("itemName").textContent;
+    var itemPrice = parseFloat(document.getElementById("priceValue").textContent);
+    var quantity = parseInt(document.getElementById("quantity").value);
+    var totalPrice = parseFloat(document.getElementById("totalPrice").textContent);
+
+    console.log("Item added to cart:");
+    console.log("Name: " + itemName);
+    console.log("Price: " + itemPrice.toFixed(2));
+    console.log("Quantity: " + quantity);
+    console.log("Total Price: " + totalPrice.toFixed(2));
+}
+
+</script>
+
+
+</body>
+</html>

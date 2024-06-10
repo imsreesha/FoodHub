@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/profilenew.css' %}">
+<title>Dynamic Content Example</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+<header class="header">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" href="#">E Food</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<h1>User Details</h1>
+<div id="container">
+  <div class="button-container">
+    <span class="load-button" onclick="loadContent('Account Details')">Account Details</span>
+    <span class="load-button" onclick="loadContent('Change Password')">Change Password</span>
+    <span class="load-button" onclick="loadContent('Add Address')">Add Address</span>
+    <span class="load-button" onclick="loadContent('Manage Address')">Manage Address</span>
+    <span class="load-button" onclick="loadContent('My Orders')">My Orders</span>
+    <span class="load-button" onclick="logout()">Log Out</span>
+
+  </div>
+  <div id="dynamic-content"></div>
+</div>
+
+<!-- Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+   // JavaScript functions
+function loadContent(buttonText) {
+    var dynamicContentDiv = document.getElementById("dynamic-content");
+
+    // Clear existing content
+    dynamicContentDiv.innerHTML = '';
+
+    // Check which button was clicked and load the corresponding content
+    if (buttonText === 'Account Details') {
+        // Render the account details directly
+        dynamicContentDiv.innerHTML = `
+            <h2>Account Details</h2>
+            <p><strong>Username:</strong> {{ user_details.User_name }}</p>
+            <p><strong>Phone Number:</strong> {{ user_details.User_phone }}</p>
+            <p><strong>Email:</strong> {{ user_details.User_email }}</p>
+        `;
+    } else if (buttonText === 'Change Password') {
+        // Render the change password form
+        dynamicContentDiv.innerHTML = `
+            <h2>Change Password</h2>
+            <form id="change-password-form" method="POST" action="{% url 'change_password' %}">
+                {% csrf_token %}
+                <label for='current-password'>Current Password:</label>
+                <input type='password' id='current-password' name='current_password'><br>
+                <label for='new-password'>New Password:</label>
+                <input type='password' id='new-password' name='new_password'><br>
+                <label for='confirm-new-password'>Confirm New Password:</label>
+                <input type='password' id='confirm-new-password' name='confirm_new_password'><br>
+                <button type='submit'>Submit</button>
+            </form>
+        `;
+    } else if (buttonText === 'Add Address') {
+        // Render the add address form
+        dynamicContentDiv.innerHTML = `
+            <h2>Add Address</h2>
+            <form id="add-address-form" method="POST" action="{% url 'add_address' %}">
+                {% csrf_token %}
+
+                <label for='Address'>Address(Area & street):</label>
+                <input type='text' id='Address' name='Address'><br><br>
+                <label for='City'>City:</label>
+                <input type='text' id='city' name='city'><br><br>
+                <label for='state'>State:</label>
+                <input type='text' id='state' name='state'><br><br>
+                <label for='pincode'>Pincode:</label>
+                <input type='text' id='pincode' name='pincode'><br><br>
+                <input type='submit' value='Submit'>
+            </form>
+        `;
+    }else if (buttonText === 'Manage Address') {
+    // Create the required content for Manage Address
+    var content = "<h2>Manage Address</h2>";
+
+    // Loop through the addresses and generate a card for each address
+    {% for address in address_details %}
+        content += "<div class='card'>";
+        content += "<p><strong>Street:</strong> {{ address.Street }}</p>";
+        content += "<p><strong>City:</strong> {{ address.City }}</p>";
+        content += "<p><strong>State:</strong> {{ address.State }}</p>";
+        content += "<p><strong>Pincode:</strong> {{ address.Pincode }}</p>";
+        // Pass address ID dynamically to the deleteAddress function
+        content += "<button class='delete-button' onclick='deleteAddress({{ address.Address_id }})'>Delete</button>";
+        content += "</div>";
+    {% endfor %}
+
+    dynamicContentDiv.innerHTML = content;
+}
+ else if (buttonText === 'My Orders') {
+        // Create the required content for My Orders
+        var content = "<h2>My Orders</h2>";
+        content += "<p>Your orders will appear here.</p>";
+
+        dynamicContentDiv.innerHTML = content;
+    }
+}
+
+function deleteAddress(addressId) {
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+    // Create a form element
+    const form = document.createElement('form');
+    form.setAttribute('method', 'post');
+    form.setAttribute('action', '/delete_address/');
+
+    // Add CSRF token input field
+    const csrfInput = document.createElement('input');
+    csrfInput.setAttribute('type', 'hidden');
+    csrfInput.setAttribute('name', 'csrfmiddlewaretoken');
+    csrfInput.setAttribute('value', csrftoken);
+    form.appendChild(csrfInput);
+
+    // Add address ID input field
+    const addressIdInput = document.createElement('input');
+    addressIdInput.setAttribute('type', 'hidden');
+    addressIdInput.setAttribute('name', 'address_id');
+    addressIdInput.setAttribute('value', addressId);
+    form.appendChild(addressIdInput);
+
+    // Append the form to the body and submit it
+    document.body.appendChild(form);
+    form.submit();
+}
+
+// JavaScript function for logout
+function logout() {
+    // Redirect to the logout URL
+    window.location.href = "{% url 'logout' %}";
+}
+</script>
+
+
+</body>
+</html>

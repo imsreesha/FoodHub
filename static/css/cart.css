@@ -1,0 +1,14 @@
+@media (min-width: 1025px) {
+  .h-custom {
+  height: 100vh !important;
+  }
+  }/* cart.css */
+
+/* Example responsive styling */
+@media (max-width: 768px) {
+  /* Adjust styles for screens smaller than 768px */
+}
+
+@media (max-width: 576px) {
+  /* Adjust styles for screens smaller than 576px */
+}

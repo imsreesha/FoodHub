@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Shopping Cart</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<style>
+    .navb-search{
+    margin-left: 40px;
+}
+.nav-link{
+    font-family: 'poppins';
+    font-weight: 400;
+}
+.navb-form-btn{
+    color: #000000;
+    border-color: #000000;
+    font-family: 'poppins';
+}
+.navb-form-btn:hover{
+    background-color: #000000;
+    color: #05D1DF;
+}
+.search-input {
+    border-radius: 5px;
+    opacity: 0.5;
+    color: white;
+}
+.titles{
+    color: #05D1DF;
+}
+  @media (min-width: 1025px) {
+  .h-custom {
+  height: 100vh !important;
+  }
+  }/* cart.css */
+
+/* Example responsive styling */
+@media (max-width: 768px) {
+  /* Adjust styles for screens smaller than 768px */
+}
+
+@media (max-width: 576px) {
+  /* Adjust styles for screens smaller than 576px */
+}
+
+</style>
+<body style="background-color: #eee;">
+    <nav class="navbar navbar-expand-md navbar-light" style='background-color: #05D1DF ;'>
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="eaticon1.png" alt="" width="30" height="30">
+          </a>
+          <form class="d-flex navb-search">
+            <input class="form-control me-2 search-input" type="search" placeholder="Food item/Restaurant" aria-label="Search">
+            <button class="btn navb-form-btn" type="submit">Search</button>
+          </form>
+          <form class="d-flex navb-search">
+            <input class="form-control me-2 search-input" type="search" placeholder="Location" aria-label="Search">
+            <button class="btn navb-form-btn" type="submit">Search</button>
+          </form>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end align-center" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#about" data-bs-toggle="modal">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Help</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><i class='bx bx-heart'></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><i class='bx bxs-cart'></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><i class='bx bx-user-circle'></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="modal fade" id="about" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="text-center titles">About Eat Food </h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <body class="bg-light text-dark">
+
+                    <div class="container py-5">
+
+
+                        <p class="lead text-center">Your Food Delivery is your go-to platform for a delightful dining experience from the comfort of your home. We connect you with a variety of local restaurants, making food ordering and delivery a seamless and enjoyable process.</p>
+
+                        <p class="text-center mission-statement"><em>Our mission is to bring the joy of diverse cuisines to your doorstep, ensuring you have access to your favorite meals whenever you crave them.</em></p>
+
+                        <div class="row mt-5">
+                            <div class="col-lg-6">
+                                <h2 class=" titles">How It Works</h2>
+                                <p>Explore our user-friendly platform to discover a wide range of restaurants in your area. Simply browse the menus, customize your order, and proceed to checkout. Our efficient delivery team ensures your food is delivered hot and fresh to your doorstep.</p>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <h2 class="titles">Our Commitment</h2>
+                                <p>At Your Food Delivery, we are committed to providing a convenient and reliable food ordering and delivery service. We prioritize quality, timely deliveries, and customer satisfaction. Your dining experience matters, and we strive to make it exceptional every time.</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-5">
+                            <h2 class="titles ">Why Choose Us?</h2>
+                            <ul>
+                                <li>Wide Variety: Access a diverse range of cuisines and dishes from local restaurants.</li>
+                                <li>Convenience: Order with ease from the comfort of your home or office.</li>
+                                <li>Quick Delivery: Our dedicated team ensures prompt and efficient food delivery.</li>
+                                <li>Quality Assurance: We collaborate with reputable restaurants to deliver high-quality meals.</li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-5">
+                            <h2 class=" titles">Contact Us</h2>
+                            <p>If you have any inquiries, feedback, or if you're a restaurant interested in partnering with us, feel free to contact our team at [email] or [phone number]. Your satisfaction is our priority.</p>
+                        </div>
+                    </div>
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn " data-bs-dismiss="modal">Close</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+  <section class="h-100 h-custom">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col">
+          <div class="card">
+            <div class="card-body p-4">
+
+              <div class="row">
+
+                <div class="col-lg-7">
+                  <h5 class="mb-3"><a href="#!" class="text-body">Check Out</a></h5>
+                  <hr>
+                  <div class="row">
+                    <h5>Select Address</h5>
+
+                    <div class="col-md-1 mt-4" style="text-align: center;">
+                        <input type="radio" name="address" value="address1">
+                    </div>
+                    <div class="col-md-11 mt-4">
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <p class="card-text">velluthedathuparambil(H), Ooramana P.O, Kayanad,muvattupuzha</p>
+                                        <p class="card-text">Ernakulam,Kerala</p>
+                                        <p class="card-text">686663</p>
+                                        <p>7012450927</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-1 mt-2" style="text-align: center;">
+                        <input type="radio" name="address" value="address1">
+                    </div>
+                    <div class="col-md-11 mt-2">
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <p class="card-text">velluthedathuparambil(H), Ooramana P.O, Kayanad,muvattupuzha</p>
+                                        <p class="card-text">Ernakulam,Kerala</p>
+                                        <p class="card-text">686663</p>
+                                        <p>7012450927</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                  <div style="text-align: center;">
+                  <a href="#" class="btn btn-warning">Add Address</a>
+                </div>
+
+                  <div class="d-flex justify-content-between align-items-center mb-4 mt-5">
+                    <div>
+                      <h5 class="mb-1">Cart Items</h5>
+                      <p class="mb-0">{{cart_count}}</p>
+                    </div>
+                  </div>
+                  {% for x in cart-data %}
+                  <div class="card mb-3">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-row align-items-center">
+                          <div>
+                            <img src="1st.png"
+                              class="img-fluid rounded-3" alt="{{x.item_id}}" style="width: 65px;">
+                          </div>
+                          <div class="ms-3">
+                            <h5>{{x.item_id.Item_name}}</h5>
+                            <p class="small mb-0">{{x.item_id.Host_id}}</p>
+                          </div>
+                        </div>
+                        <div class="d-flex flex-row align-items-center">
+                          <div style="width: 50px;">
+                            <h5 class="fw-normal mb-0">2</h5>
+                          </div>
+                          <div style="width: 80px;">
+                            <h5 class="mb-0">₹300</h5>
+                          </div>
+                          <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="card mb-3">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-row align-items-center">
+                          <div>
+                            <img src="{{x.item_id_Image url}}"
+                              class="img-fluid rounded-3" alt="{{x.item_id.Item_name}}" style="width: 65px;">
+                          </div>
+
+
+                <div class="col-lg-5">
+
+                  <div class="card bg-primary text-white rounded-3">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="mb-0">Card details</h5>
+
+                      </div>
+                      <p class="small mb-2">Card type</p>
+                      <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-mastercard fa-2x me-2"></i></a>
+                      <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-visa fa-2x me-2"></i></a>
+                      <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-paypal fa-2x me-2"></i></a>
+                      <a href="#!" type="submit" class="text-white"><img src="ama.png" alt="Amazon Pay" style="width: 2em;"/></a>
+                      <a href="#!" type="submit" class="text-white"><img src="gpay.png" alt="google Pay" style="width: 2em;"/></a>
+
+
+
+                      <form class="mt-4">
+                        <div class="form-outline form-white mb-4">
+                          <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
+                            placeholder="Cardholder's Name" />
+                          <label class="form-label" for="typeName">Cardholder's Name</label>
+                        </div>
+
+                        <div class="form-outline form-white mb-4">
+                          <input type="text" id="typeText" class="form-control form-control-lg" siez="17"
+                            placeholder="1234 5678 9012 3457" minlength="19" maxlength="19" />
+                          <label class="form-label" for="typeText">Card Number</label>
+                        </div>
+
+                        <div class="row mb-4">
+                          <div class="col-md-6">
+                            <div class="form-outline form-white">
+                              <input type="text" id="typeExp" class="form-control form-control-lg"
+                                placeholder="MM/YYYY" size="7" id="exp" minlength="7" maxlength="7" />
+                              <label class="form-label" for="typeExp">Expiration</label>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-outline form-white">
+                              <input type="password" id="typeText" class="form-control form-control-lg"
+                                placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
+                              <label class="form-label" for="typeText">CVV</label>
+                            </div>
+                          </div>
+                        </div>
+
+                      </form>
+
+                      <hr class="my-4">
+
+                      <div class="d-flex justify-content-between">
+                        <p class="mb-2">Subtotal</p>
+                        <p class="mb-2">₹1290.00</p>
+                      </div>
+
+                      <div class="d-flex justify-content-between">
+                        <p class="mb-2">Shipping</p>
+                        <p class="mb-2">₹100.00</p>
+                      </div>
+
+                      <div class="d-flex justify-content-between mb-4">
+                        <p class="mb-2">Total(Incl. taxes)</p>
+                        <p class="mb-2">₹1390.00</p>
+                      </div>
+
+                      <button type="button" class="btn btn-info btn-block btn-lg">
+                        <div class="d-flex justify-content-between">
+                          <span>₹1390.00</span>
+                          <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
+                        </div>
+                      </button>
+
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

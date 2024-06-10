@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create User</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Create User</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="user_name">Username:</label>
+                {{ form.User_name }}
+                {% if form.User_name.errors %}
+                    <small class="text-danger">{{ form.user_name.errors }}</small>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="user_password">Password:</label>
+                {{ form.user_password }}
+                {% if form.user_password.errors %}
+                    <small class="text-danger">{{ form.user_password.errors }}</small>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="user_email">Email:</label>
+                {{ form.Email }}
+                {% if form.email.errors %}
+                    <small class="text-danger">{{ form.user_email.errors }}</small>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="user_phone">Phone:</label>
+                {{ form.user_phone }}
+                {% if form.user_phone.errors %}
+                    <small class="text-danger">{{ form.user_phone.errors }}</small>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
